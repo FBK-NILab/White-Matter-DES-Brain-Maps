@@ -26,7 +26,7 @@ datavar$t2=dummy_t2
 
 # pairwise comparisons
 
-# SURGERY_TYPE, AGE, SEX, EDUCATION, LESION_CM3, MGMT, IDH, GRADE, LOBE, SIDE
+# SURGERY_TYPE, AGE, SEX, EDUCATION, LESION_CM3, MGMT, IDH, GRADE, LOBE
 
 plgModel_1 <- lmer(BEHAV_OUT ~ 1 + WM_OVERLAP*t0 + WM_OVERLAP*t2 + (1 | SUB_ID),
                    REML=FALSE,data = datavar)
@@ -57,6 +57,7 @@ plot(plgModel_2)
 rfx = data.frame(ranef(plgModel_2)) # edit model
 shapiro.test(rfx$condval)
 shapiro.test(datavar$BEHAV_OUT - fitted(plgModel_2)) # edit model
+
 
 
 

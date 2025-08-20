@@ -42,8 +42,14 @@ cc <- model_performance(plgModel_1)
 # effect size for wm_overlap
 (aa$R2_marginal-bb$R2_marginal)/(1-aa$R2_marginal)
 
+# significance of adding wm overlap
+anova(plgModel_3,plgModel_2)
+
 # effect size for other covariate
 (aa$R2_marginal-cc$R2_marginal)/(1-aa$R2_marginal)
+
+# significance of adding the other covariate
+anova(plgModel_3,plgModel_1)
 
 # Check assumptions
 
@@ -51,5 +57,6 @@ plot(plgModel_2)
 rfx = data.frame(ranef(plgModel_2)) # edit model
 shapiro.test(rfx$condval)
 shapiro.test(datavar$BEHAV_OUT - fitted(plgModel_2)) # edit model
+
 
 
